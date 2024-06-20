@@ -1,0 +1,93 @@
+# version: '3.3'
+# services:
+#   invest-tracker:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "80:80"
+#     depends_on:
+#       - db
+#     environment:
+#       CONFIG_PATH: ${CONFIG_PATH}
+#       DB_HOST: ${DB_HOST}
+#       DB_PORT: ${DB_PORT}
+#       DB_USER: ${DB_USER}
+#       DB_PASS: ${DB_PASS}
+#       DB_NAME: ${DB_NAME}
+#       DB_SSLMODE: ${DB_SSLMODE}
+#     command: ["./wait-for-it.sh", "db:5432", "--", "./main"]
+
+#   db:
+#     image: postgres:latest
+#     environment:
+#       POSTGRES_USER: ${POSTGRES_USER}
+#       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+#       POSTGRES_DB: ${POSTGRES_DB}
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data
+
+# volumes:
+#   pgdata:
+
+# version: '4.0'
+# services:
+#   invest-tracker:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "80:80"
+#     depends_on:
+#       - db
+#     env_file:
+#       - ./.env
+#     command: ["./wait-for-it.sh", "db:5432", "--", "./main"]
+
+#   db:
+#     image: postgres:latest
+#     env_file:
+#       - ./.env
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data
+
+# volumes:
+#   pgdata:
+version: '4.5'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: p0stgreS
+      POSTGRES_DB: invest
+    ports:
+      - "5432:5432"
+    networks:
+      - mynetwork
+
+  app:
+    build: .
+    environment:
+      CONFIG_PATH: /app/config.json
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASS: p0stgreS
+      DB_NAME: invest
+      DB_SSLMODE: disable
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge

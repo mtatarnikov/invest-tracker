@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Assets list">
+    <meta name="keywords" content="assets, wallet">
+    <meta name="author" content="Tatarnikov Michael">
+    <title>Assets list</title>
+    <link rel="apple-touch-icon" href="/static/img/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/img/ico/favicon.ico">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700"
+        rel="stylesheet">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="/static/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/vendors/css/tables/datatable/datatables.min.css">
+    <script src="/static/js/scripts/charts/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/vendors/css/forms/selects/select2.min.css">
+
+    <style>
+        .select2-container .select2-selection--single .select2-selection__rendered {
+            padding-left: 35px;
+        }
+    </style>
+
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/components.css">
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="/static/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/core/colors/palette-gradient.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/pages/page-users.css">
+    <!-- END: Page CSS-->
+
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="vertical-layout vertical-menu 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu"
+    data-col="2-columns">
+
+    <!-- BEGIN: Header-->
+    <nav
+        class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light bg-info navbar-shadow">
+        <div class="navbar-wrapper">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav flex-row">
+                    <li class="nav-item mobile-menu d-md-none mr-auto"><a
+                            class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
+                                class="ft-menu font-large-1"></i></a></li>
+                    <li class="nav-item"><a class="navbar-brand" href="/"><img class="brand-logo"
+                                alt="modern admin logo" src="/static/img/logo/logo.png">
+                            <h3 class="brand-text">Invest tracker</h3>
+                        </a></li>
+                    <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse"
+                            data-target="#navbar-mobile"><i class="la la-ellipsis-v"></i></a></li>
+                </ul>
+            </div>
+            <div class="navbar-container content">
+                <div class="collapse navbar-collapse" id="navbar-mobile">
+                    <ul class="nav navbar-nav float-right">
+                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#"
+                                data-toggle="dropdown"><i class="ficon ft-bell"></i><span
+                                    class="badge badge-pill badge-danger badge-up badge-glow">5</span></a>
+                            <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                                <li class="dropdown-menu-header">
+                                    <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span>
+                                    </h6><span class="notification-tag badge badge-danger float-right m-0">5 New</span>
+                                </li>
+                                <li class="scrollable-container media-list w-100"><a href="javascript:void(0)">
+                                        <div class="media">
+                                            <div class="media-left align-self-center"><i
+                                                    class="ft-plus-square icon-bg-circle bg-cyan mr-0"></i></div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading">You have new order!</h6>
+                                                <p class="notification-text font-small-3 text-muted">Lorem ipsum dolor
+                                                    sit amet, consectetuer elit.</p><small>
+                                                    <time class="media-meta text-muted"
+                                                        datetime="2015-06-11T18:29:20+08:00">30 minutes
+                                                        ago</time></small>
+                                            </div>
+                                        </div>
+                                    </a><a href="javascript:void(0)">
+                                        <div class="media">
+                                            <div class="media-left align-self-center"><i
+                                                    class="ft-download-cloud icon-bg-circle bg-red bg-darken-1 mr-0"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading red darken-1">99% Server load</h6>
+                                                <p class="notification-text font-small-3 text-muted">Aliquam tincidunt
+                                                    mauris eu risus.</p><small>
+                                                    <time class="media-meta text-muted"
+                                                        datetime="2015-06-11T18:29:20+08:00">Five hour
+                                                        ago</time></small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center"
+                                        href="javascript:void(0)">Read all notifications</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown dropdown-user nav-item"><a
+                                class="dropdown-toggle nav-link dropdown-user-link" href="#"
+                                data-toggle="dropdown"><span class="mr-1 user-name text-bold-700">John Doe</span><span
+                                    class="avatar avatar-online"><img src="/static/img/portrait/small/avatar-s-23.png"
+                                        alt="avatar"><i></i></span></a>
+                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item"
+                                    href="user-profile.html"><i class="ft-user"></i> Edit Profile</a><a
+                                    class="dropdown-item" href="app-kanban.html"><i class="ft-clipboard"></i> Todo</a><a
+                                    class="dropdown-item" href="user-cards.html"><i class="ft-check-square"></i>
+                                    Task</a>
+                                <div class="dropdown-divider"></div><a class="dropdown-item"
+                                    href="login-with-bg-image.html"><i class="ft-power"></i> Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- END: Header-->
+
+
+    <!-- BEGIN: Main Menu-->
+
+    <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true">
+        <div class="main-menu-content">
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class=" navigation-header"><span>Apps</span><i class="la la-ellipsis-h" data-toggle="tooltip"
+                        data-placement="right" data-original-title="Apps"></i>
+                </li>
+                <li class=" nav-item"><a href="account-setting.html"><i class="la la-user-plus"></i><span
+                            class="menu-title" data-i18n="Account Setting">Account Setting</span></a>
+                </li>
+                <li class=" nav-item"><a href="#"><i class="la la-unlock"></i><span class="menu-title"
+                            data-i18n="Authentication">Authentication</span></a>
+                    <ul class="menu-content">
+                        <li><a class="menu-item" href="login-simple.html" target="_blank"><i></i><span
+                                    data-i18n="Login Simple">Login Simple</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="disabled nav-item"><a href="#"><i class="la la-eye-slash"></i><span class="menu-title"
+                            data-i18n="Disabled Menu">Disabled Menu</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- END: Main Menu-->
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <!-- stats start-->
+                <section id="chartjs-pie-charts">
+                    <div class="row">
+                        <!-- Simple Doughnut Chart -->
+                        <div class="col-md-6 col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Аналитика</h4>
+                                    <a class="heading-elements-toggle"><i
+                                            class="la la-ellipsis-v font-medium-3"></i></a>
+                                    <div class="heading-elements">
+                                        <ul class="list-inline mb-0">
+                                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                            <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="btn-group" style="margin-left: 30px;">
+                                        <button onclick="changeChart('chart1', '/assets-chart-one')"
+                                            class="btn btn-outline-info btn-min-width box-shadow-3 mr-1 mb-1 btn-sm">Активы</button>
+                                        <button onclick="changeChart('chart2', '/assets-chart-two')"
+                                            class="btn btn-outline-info btn-min-width box-shadow-3 mr-1 mb-1 btn-sm">Классы</button>
+                                        <button onclick="changeChart('chart3', '/assets-chart-three')"
+                                            class="btn btn-outline-info btn-min-width box-shadow-3 mr-1 mb-1 btn-sm">Сектора</button>
+                                    </div>
+                                </div>
+                                <div class="card-content collapse show chart-container">
+                                    <div class="card-body">
+                                        <canvas id="chart1"></canvas>
+                                        <canvas id="chart2"></canvas>
+                                        <canvas id="chart3"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Simple Card -->
+                        <div class="col-md-6 col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Новый актив</h4>
+                                    <a class="heading-elements-toggle"><i
+                                            class="la la-ellipsis-v font-medium-3"></i></a>
+                                    <div class="heading-elements">
+                                        <ul class="list-inline mb-0">
+                                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                            <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-content collapse show">
+                                    <div class="card-body">
+                                        <form class="form" action="/asset-new" method="post">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <!-- Колонка 1 -->
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <div class="position-relative has-icon-left">
+                                                                <select class="select2 form-control" id="newassetinput1" name="ticker">
+                                                                </select>
+                                                                <div class="form-control-position">
+                                                                    <i class="la la-briefcase"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="position-relative has-icon-left">
+                                                                <input type="date" id="newassetinput2"
+                                                                    class="form-control" name="transaction_date">
+                                                                <div class="form-control-position">
+                                                                    <i class="ft-message-square"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="position-relative has-icon-left">
+                                                                <input type="text" id="newassetinput3"
+                                                                    class="form-control" placeholder="Тип операции"
+                                                                    name="transaction_type">
+                                                                <div class="form-control-position">
+                                                                    <i class="ft-clipboard"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Колонка 2 -->
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <div class="position-relative has-icon-left">
+                                                                <input type="number" id="newassetinput4"
+                                                                    class="form-control" placeholder="Количество"
+                                                                    name="amount">
+                                                                <div class="form-control-position">
+                                                                    <i class="la la-cart-plus"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Цена" name="price" min="0" step="0.01">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">₽</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Комиссия" name="tax" min="0" step="0.01">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">₽</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="newassetinput7">Примечние</label>
+                                                    <div class="position-relative has-icon-left">
+                                                        <textarea id="newassetinput7" rows="5" class="form-control"
+                                                            name="note" placeholder="notes"></textarea>
+                                                        <div class="form-control-position">
+                                                            <i class="ft-file"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-actions right">
+											    <button type="submit"
+                                                    class="btn btn-outline-info btn-min-width box-shadow-3 mr-1 mb-1 btn-sm">
+                                                    <i class="la la-sign-in"></i> Импортировать
+                                                </button>
+                                                <button type="submit"
+                                                    class="btn btn-outline-success btn-min-width box-shadow-3 mr-1 mb-1 btn-sm">
+                                                    <i class="la la-check-square-o"></i> Добавить
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- stats ends -->
+                <!-- users list start -->
+                <section class="users-list-wrapper">
+                    <div class="users-list-table">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <!-- datatable start -->
+                                    <div class="table-responsive">
+                                        <table id="assets-list" class="display" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 5%; white-space: normal;">ID</th>
+                                                    <th style="width: 10%; white-space: normal;">Ticker</th>
+                                                    <th style="width: 10%; white-space: normal;">Transactiopn type</th>
+                                                    <th style="width: 10%; white-space: normal;">Transactiopn date</th>
+                                                    <th style="width: 10%; white-space: normal;">Amount</th>
+                                                    <th style="width: 10%; white-space: normal;">Price</th>
+                                                    <th style="width: 10%; white-space: normal;">Tax</th>
+                                                    <th style="width: 10%; white-space: normal;">Note</th>
+                                                    <th style="width: 5%; white-space: normal;">Commands</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- datatable ends -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- users list ends -->
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Footer-->
+    <footer class="footer footer-static footer-light navbar-border navbar-shadow">
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span
+                class="float-md-left d-block d-md-inline-block">© <span class="year"></span> <a
+                    class="text-bold-800 grey darken-2" href="https://ya.ru" target="_blank">Tatarnikov
+                    Michael</a></span><span class="float-md-right d-none d-lg-block">Hand-crafted & Made with<i
+                    class="ft-heart pink"></i><span id="scroll-top"></span></span></p>
+    </footer>
+    <!-- END: Footer-->
+
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="/static/vendors/js/vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="/static/vendors/js/tables/datatable/datatables.min.js"></script>
+    <script src="/static/vendors/js/forms/select/select2.full.min.js"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="/static/js/core/app-menu.js"></script>
+    <script src="/static/js/core/app.js"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="/static/js/scripts/pages/page-users.js"></script>
+    <script src="/static/js/scripts/charts/chartjs/pie-doughnut/pie.js"></script>
+    <script src="/static/js/scripts/charts/chartjs/pie-doughnut/pie-simple.js"></script>
+    <script src="/static/js/scripts/charts/chartjs/pie-doughnut/doughnut.js"></script>
+    <script src="/static/js/scripts/charts/chartjs/pie-doughnut/doughnut-simple.js"></script>
+    <script src="/static/js/scripts/forms/select/form-select2.js"></script>
+    <!-- END: Page JS-->
+
+    <!-- Подключение DataTables CSS через CDN -->
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">-->
+
+    <!-- Подключение DataTables JavaScript через CDN -->
+    <!--<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>-->
+
+    <script>
+        $(document).ready(function () {
+            $('#assets-list').DataTable({
+                "ajax": {
+                    "url": "http://localhost/assets-table",
+                    "type": "GET",
+                    "dataSrc": ""
+                },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "ticker" },
+                    { "data": "transaction_type" },
+                    { "data": "transaction_date" },
+                    { "data": "amount" },
+                    { "data": "price" },
+                    { "data": "tax" },
+                    {
+                        "data": "note",
+                        "render": function (data, type, row) {
+                            return data.Valid ? data.String : ""; // Проверка на Valid и отображение String
+                        }
+                    },
+                    {
+                        "data": null,
+                        "render": function (data, type, row) {
+                            return '<a href="' + row.link_edit + '"><i class="ft-edit-1"></i></a>' +
+                                ' <a href="' + row.link_delete + '"><i class="ft-trash-2"></i></a>';
+                        }
+                    }
+                ],
+                pageLength: 3,
+            });
+        });
+    </script>
+
+    <script>
+        // Функция для смены отображаемого графика
+        function changeChart(chartId, endpoint) {
+            // Скрываем все графики
+            document.querySelectorAll('.chart-container canvas').forEach(function (canvas) {
+                canvas.style.display = 'none';
+            });
+
+            // Загружаем данные для выбранного графика (e.g. endpoint = "http://localhost/assets-chart-one")
+            fetch(endpoint)
+                .then(response => response.json())
+                .then(doughnutData => {
+                    var ctx = document.getElementById(chartId).getContext('2d');
+
+                    // Проверяем, был ли график уже инициализирован
+                    if (window[chartId] && typeof window[chartId].update === 'function') {
+                        // Обновляем данные графика
+                        window[chartId].data = doughnutData;
+                        window[chartId].update();
+                    } else {
+                        // Инициализируем новый график, если он еще не создан
+                        window[chartId] = new Chart(ctx, {
+                            type: 'doughnut',
+                            data: doughnutData,
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false, // поддержание соотношения сторон
+                                legend: {
+                                    position: 'top',
+                                },
+                                animation: {
+                                    animateScale: true,
+                                    animateRotate: true
+                                }
+                            }
+                        });
+                    }
+
+                    // Отображаем график
+                    document.getElementById(chartId).style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Ошибка при получении данных графика:', error);
+                });
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Инициализация первого графика в любом случае
+            changeChart('chart1', '/assets-chart-one');
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '/tickers',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var select = $('#newassetinput1');
+                    select.empty(); // Очистка текущих опций
+                    data.forEach(function (ticker) {
+                        select.append(new Option(ticker, ticker));
+                    });
+                    select.trigger('change'); // Обновление Select2
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log('Ошибка загрузки тикеров: ' + textStatus);
+                }
+            });
+
+            $('#newassetinput1').select2({
+                placeholder: 'Тикер',
+                allowClear: true
+            });
+        });
+    </script>
+
+</body>
+<!-- END: Body-->
+
+</html>
