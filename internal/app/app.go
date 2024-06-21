@@ -1,8 +1,10 @@
 package app
 
 import (
+	"fmt"
 	"invest-tracker/internal/handlers"
 	"invest-tracker/internal/middleware"
+	"invest-tracker/pkg/config"
 	"invest-tracker/pkg/storage"
 	"log"
 	"net/http"
@@ -21,7 +23,15 @@ func Run() {
 	defer pg.Close()
 
 	// Создаем хранилище сессий с использованием pgstore
-	store, err := pgstore.NewPGStore("postgres://postgres:p0stgreS@localhost/invest?sslmode=disable", []byte("super-secret-key"))
+	cfg, err := config.Read()
+	if err != nil {
+		log.Fatal("failed to read config: %w", err)
+	}
+
+	dbURL := fmt.Sprintf("postgres://%s:%s@%s/%s?sslmode=disable",
+		cfg.Database.User, cfg.Database.Password, cfg.Database.Host, cfg.Database.DBName)
+
+	store, err := pgstore.NewPGStore(dbURL, []byte("super-secret-key"))
 	if err != nil {
 		log.Fatal("Ошибка создания хранилища сессий: ", err)
 	}
@@ -30,7 +40,9 @@ func Run() {
 	r := mux.NewRouter()
 
 	// Настройка обработки статических файлов
-	staticPath := filepath.Join("..\\..\\", "ui", "static")
+	// Для локальной разработки
+	//staticPath := filepath.Join("..\\..\\", "ui", "static")
+	staticPath := filepath.Join("ui", "static")
 	fs := http.FileServer(http.Dir(staticPath))
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", fs))
 

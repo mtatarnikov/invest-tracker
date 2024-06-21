@@ -19,10 +19,13 @@ type Config struct {
 
 func Read() (Config, error) {
 	var config Config
-	// Для локальной разработки
-	file, err := os.Open("../../config.json")
-	// Для контейнера
-	//file, err := os.Open("config.json")
+	configPath := os.Getenv("CONFIG_PATH")
+	if configPath == "" {
+		//configPath = "../../config.json" // Для локальной разработки
+		configPath = "config.json" // путь по умолчанию для контейнера
+	}
+
+	file, err := os.Open(configPath)
 	if err != nil {
 		return config, fmt.Errorf("error opening config file: %w", err)
 	}
@@ -31,6 +34,12 @@ func Read() (Config, error) {
 	err = json.NewDecoder(file).Decode(&config)
 	if err != nil {
 		return config, fmt.Errorf("error decoding config file: %w", err)
+	}
+
+	// Переопределяем HtmlTemplatePath, если установлена переменная окружения
+	htmlTemplatePath := os.Getenv("HTML_TEMPLATE_PATH")
+	if htmlTemplatePath != "" {
+		config.HtmlTemplatePath = htmlTemplatePath
 	}
 
 	return config, nil

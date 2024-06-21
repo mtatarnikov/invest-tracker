@@ -75,6 +75,7 @@ services:
     build: .
     environment:
       CONFIG_PATH: /app/config.json
+      HTML_TEMPLATE_PATH: /app/ui/html/
       DB_HOST: db
       DB_PORT: 5432
       DB_USER: postgres
