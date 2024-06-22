@@ -22,7 +22,6 @@ func Run() {
 	}
 	defer pg.Close()
 
-	// Создаем хранилище сессий с использованием pgstore
 	cfg, err := config.Read()
 	if err != nil {
 		log.Fatal("failed to read config: %w", err)
@@ -31,6 +30,7 @@ func Run() {
 	dbURL := fmt.Sprintf("postgres://%s:%s@%s/%s?sslmode=disable",
 		cfg.Database.User, cfg.Database.Password, cfg.Database.Host, cfg.Database.DBName)
 
+	// Создаем хранилище сессий с использованием pgstore
 	store, err := pgstore.NewPGStore(dbURL, []byte("super-secret-key"))
 	if err != nil {
 		log.Fatal("Ошибка создания хранилища сессий: ", err)
@@ -59,10 +59,10 @@ func Run() {
 		handlers.AssetsTable(pg, store, w, r)
 	}), store)).Methods("GET")
 	r.Handle("/assets-chart-one", middleware.Auth(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		handlers.AssetsChartOne(pg, w, r)
+		handlers.AssetsChartOne(pg, store, w, r)
 	}), store)).Methods("GET")
 	r.Handle("/assets-chart-two", middleware.Auth(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		handlers.AssetsChartTwo(pg, w, r)
+		handlers.AssetsChartTwo(pg, store, w, r)
 	}), store)).Methods("GET")
 	r.Handle("/asset-new", middleware.Auth(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		handlers.AssetNew(pg, store, w, r)
