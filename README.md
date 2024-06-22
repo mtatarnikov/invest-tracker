@@ -31,3 +31,14 @@
    ```
    docker-compose up --build
    ```
+
+## Как запустить demo
+
+1. Убедитесь, что контейнеры запущены:
+   ![docker 01](https://github.com/mtatarnikov/invest-tracker/blob/master/ui/static/img/demo/docker-app-01.png) 
+   
+   ![docker 02](https://github.com/mtatarnikov/invest-tracker/blob/master/ui/static/img/demo/docker-app-02.png)
+   
+   Выполните в браузере http://localhost и авторизуйтесь с данными пользователя: `demo` и паролем: `demo`.
+   
+   ![Приложение](https://github.com/mtatarnikov/invest-tracker/blob/master/ui/static/img/demo/demo-assets-page.png)
