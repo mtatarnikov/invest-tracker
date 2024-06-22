@@ -30,6 +30,7 @@ COPY wait-for-it.sh /wait-for-it.sh
 RUN chmod +x /wait-for-it.sh
 
 # Запуск через entrypoint
+RUN chmod +x entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
 
 # CMD для выполнения миграций и запуска приложения
