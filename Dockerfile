@@ -1,7 +1,7 @@
 # Golang как базовый образ
 FROM golang:latest
 
-# Установить netcat-openbsd
+# Установить netcat-openbsd (нужен для wait-for-it.sh)
 RUN apt-get update && apt-get install -y netcat-openbsd
 
 # Установить Goose (migrations)
@@ -33,6 +33,5 @@ RUN chmod +x /wait-for-it.sh
 RUN chmod +x entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
 
-# CMD для выполнения миграций и запуска приложения
+# Выполнеям миграций и запуск приложения
 CMD ["./wait-for-it.sh", "db:5432", "--", "./main"]
-#CMD ["./main"]

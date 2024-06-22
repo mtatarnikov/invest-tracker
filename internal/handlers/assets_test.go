@@ -54,6 +54,7 @@ func TestAssetNew(t *testing.T) {
 		t.Fatal(err)
 	}
 
+	// Подключение к тестовой БД
 	dsn := fmt.Sprintf("postgres://%s:%s@%s:%d/%s?sslmode=disable",
 		cfg.Database.User, cfg.Database.Password, cfg.Database.Host, cfg.Database.Port, cfg.Database.DBName)
 
