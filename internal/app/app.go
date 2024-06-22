@@ -14,35 +14,42 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func Run() {
+func initDB() (*storage.PostgresDB, error) {
 	pg := &storage.PostgresDB{}
 	err := pg.Init()
 	if err != nil {
-		log.Fatal("Ошибка подключения к базе данных: ", err)
+		return nil, fmt.Errorf("ошибка подключения к базе данных: %w", err)
 	}
-	defer pg.Close()
+	return pg, nil
+}
 
+func readConfig() (config.Config, error) {
 	cfg, err := config.Read()
 	if err != nil {
-		log.Fatal("failed to read config: %w", err)
+		return config.Config{}, fmt.Errorf("failed to read config: %w", err)
 	}
+	return cfg, nil
+}
 
+func initSessionStore(cfg config.Config) (*pgstore.PGStore, error) {
 	dbURL := fmt.Sprintf("postgres://%s:%s@%s/%s?sslmode=disable",
 		cfg.Database.User, cfg.Database.Password, cfg.Database.Host, cfg.Database.DBName)
 
-	// Создаем хранилище сессий с использованием pgstore
 	store, err := pgstore.NewPGStore(dbURL, []byte("super-secret-key"))
 	if err != nil {
-		log.Fatal("Ошибка создания хранилища сессий: ", err)
+		return nil, fmt.Errorf("ошибка создания хранилища сессий: %w", err)
 	}
-	defer store.Close()
+	return store, nil
+}
 
+func setupRouter(pg *storage.PostgresDB, store *pgstore.PGStore) *mux.Router {
 	r := mux.NewRouter()
 
-	// Настройка обработки статических файлов
-	// Для локальной разработки
-	//staticPath := filepath.Join("..\\..\\", "ui", "static")
-	staticPath := filepath.Join("ui", "static")
+	cfg, err := readConfig()
+	if err != nil {
+		log.Fatal(err)
+	}
+	staticPath := filepath.Join(cfg.HtmlUiStaticPath, "ui", "static")
 	fs := http.FileServer(http.Dir(staticPath))
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", fs))
 
@@ -74,5 +81,28 @@ func Run() {
 		handlers.Tickers(pg, w, r)
 	}), store)).Methods("GET")
 
-	http.ListenAndServe(":80", r)
+	return r
+}
+
+func Run() {
+	pg, err := initDB()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer pg.Close()
+
+	cfg, err := readConfig()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	store, err := initSessionStore(cfg)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer store.Close()
+
+	r := setupRouter(pg, store)
+
+	log.Fatal(http.ListenAndServe(":80", r))
 }
