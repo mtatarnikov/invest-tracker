@@ -33,5 +33,5 @@ RUN chmod +x /wait-for-it.sh
 RUN chmod +x entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
 
-# Выполнеям миграций и запуск приложения
+# Выполнение миграций и запуск приложения
 CMD ["./wait-for-it.sh", "db:5432", "--", "./main"]
